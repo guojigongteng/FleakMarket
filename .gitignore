@@ -1,0 +1,17 @@
+.idea/
+*.iml
+*.rar
+*.log
+
+**/node_modules/
+**/dist/
+**/target/
+
+.env
+.env.*
+!.env.example
+**/application-local.yml
+
+# Runtime uploads
+**/static/images/uploads/
+

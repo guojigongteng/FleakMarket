@@ -1,0 +1,48 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL:jdbc:mysql://localhost:3306/market?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=Asia/Shanghai}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:}
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 1000MB
+  mail:
+    host: smtp.163.com
+    port: 25
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    default-encoding: utf-8
+    properties:
+      mail:
+        smtp:
+          socketFactoryClass: javax.net.ssl.SSLSocketFactory
+        #显示邮件发送信息
+        debug: true
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.ct.model.ForegroundModel
+
+server:
+  port: 1024
+
+#阿里云OSS文件上传配置
+aliyun:
+  enabled: ${OSS_ENABLED:false}
+  endpoint: ${OSS_ENDPOINT:}
+  accessKeyId: ${OSS_ACCESS_KEY_ID:}
+  accessKeySecret: ${OSS_ACCESS_KEY_SECRET:}
+  bucketName: ${OSS_BUCKET_NAME:}
+  urlPrefix: ${OSS_URL_PREFIX:}
+
+
+#本地文件上传配置。默认使用当前服务模块下的 static/images，
+#也可以通过 FLEAMARKET_UPLOAD_PATH 环境变量覆盖。
+web:
+  upload-path: ${FLEAMARKET_UPLOAD_PATH:./src/main/resources/static/images}
+  server-url: ${FLEAMARKET_SERVER_URL:http://localhost:1024}
+
+  #前端响应地址
+  ipAddr: http://localhost:81/
